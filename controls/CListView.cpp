@@ -80,7 +80,7 @@ void CListView::setImageList( UINT wBMID, int cx, int cy, int iNoImg )
 
 void CListView::setExStyle( DWORD style )
 {
-	ListView_SetExtendedListViewStyleEx( m_hWnd, NULL, style );
+    ListView_SetExtendedListViewStyleEx( m_hWnd, 0, style );
 }
 
 

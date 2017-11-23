@@ -18,9 +18,8 @@ COpenSaveDlg::~COpenSaveDlg( void )
 // Memberfuncties                  //
 /////////////////////////////////////
 
-char *COpenSaveDlg::open( char *title, char *szFilter, char *szDefExt )
+string COpenSaveDlg::open( const char *title, const char *szFilter, const char *szDefExt )
 {
-	char *result;
 	OPENFILENAME ofn = {0};
 	char szFile[MAX_PATH+1] =	{0};
 	
@@ -40,22 +39,16 @@ char *COpenSaveDlg::open( char *title, char *szFilter, char *szDefExt )
 
 	//open de dialoog
 	if( GetOpenFileName( &ofn ) != 0 )
-	{
-		result = new char[strlen( ofn.lpstrFile )+1];
-		for ( int i = 0; i < strlen( ofn.lpstrFile ); i++ )
-		{
-			result[i] = ofn.lpstrFile[i];
-			if ( ofn.lpstrFile[i] == '\\' )
-				result[i] = '/';
-		}
-		result[i]='\0';
-		return result;
+    {
+        return string(ofn.lpstrFile);
 	}
+
 	//als het openen van de dialoog niet gelukt is, geeft een lege string terug
-	return "";
+
+    return string("");
 }
 
-char *COpenSaveDlg::save( char *title, char *szFilter, char *szDefExt )
+string COpenSaveDlg::save( const char *title, const char *szFilter, const char *szDefExt )
 {
 	char *result;
 	OPENFILENAME ofn = {0};
@@ -77,17 +70,11 @@ char *COpenSaveDlg::save( char *title, char *szFilter, char *szDefExt )
 
 	//open de dialoog
 	if( GetSaveFileName( &ofn ) != 0 )
-	{
-		result = new char[strlen( ofn.lpstrFile )+1];
-		for ( int i = 0; i < strlen( ofn.lpstrFile ); i++ )
-		{
-			result[i] = ofn.lpstrFile[i];
-			if ( ofn.lpstrFile[i] == '\\' )
-				result[i] = '/';
-		}
-		result[i]='\0';
-		return result;
+    {
+        return string(ofn.lpstrFile);
 	}
+
 	//als het openen van de dialoog niet gelukt is, geeft een lege string terug
-	return "";
+
+    return string("");
 }

@@ -129,7 +129,7 @@ void CFileView::setImageList( UINT wBMID, int cx, int cy, int iNoImg )
 
 void CFileView::setStyleEx( DWORD style )
 {
-	ListView_SetExtendedListViewStyleEx( m_hWnd, NULL, style );
+    ListView_SetExtendedListViewStyleEx( m_hWnd, 0, style );
 }
 
 void CFileView::setStyle( DWORD style )

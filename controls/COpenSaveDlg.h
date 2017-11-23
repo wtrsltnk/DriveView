@@ -16,8 +16,8 @@ public:
 	COpenSaveDlg( HINSTANCE, HWND );
 	~COpenSaveDlg( void );
 
-	char *open( char *, char *, char * );
-	char *save( char *, char *, char * );
+    string open( const char *title, const char *szFilter, const char *szDefExt );
+    string save( const char *title, const char *szFilter, const char *szDefExt );
 };
 
 #endif
